@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="book-list">
+    <div class="book" ng-repeat="book in main.books">
+      {{book.book_title}}<input type='number' ng-model="book.order" min="0">
+    </div>
+  </div>
+
+  <div class="result">
+    {{main.result}}
+  </div>
+</div>

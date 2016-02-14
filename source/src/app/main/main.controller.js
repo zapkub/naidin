@@ -4,7 +4,7 @@ export class MainController {
     this._ = _;
     this.log = $log.log; //love lamba
     //this.books = $state.current.data.book_shelf;
-    
+
     this.books = [
       {book_id:0,book_title:'แฮรี่ พอตหม้อกับศิลาสุขสรรพ์',price:100},
       {book_id:1,book_title:'แฮรี่ พอตหม้อกับห้องแห่งความลับ',price:100},
@@ -14,6 +14,7 @@ export class MainController {
       {book_id:5,book_title:'แฮรี่ พอตหม้อกับเจ้าชายเลือดผสม',price:100},
       {book_id:6,book_title:'แฮรี่ พอตหม้อกับเครื่องเทศยมทูต',price:100}
     ];
+
     angular.forEach(this.books, (item) => {
       item.order = 0;
     });
@@ -24,7 +25,7 @@ export class MainController {
       let order = [];
       angular.forEach(this.books, (item) => {
         if (item.order > 0) {
-          order.push(item);
+          order.push({...item});
         }
       })
       this.result = this.getDiscount(order);
@@ -33,13 +34,7 @@ export class MainController {
   }
   getDiscount(book_list) {
 
-    const list_copy = [];
-    this._.each(book_list, item => {
-      list_copy.push({
-        ...item // love spread
-      })
-    });
-
+    const list_copy = book_list;
     let discountList = this.getListOfDiscount(list_copy);
     let result = {net:0,amount:0,discount_price:0,price:0}
 

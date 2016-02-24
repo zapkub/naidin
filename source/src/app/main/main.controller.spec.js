@@ -81,7 +81,6 @@ describe('controllers', () => {
 
   it('should get 20! baht discount', () => {
     expect(vm.getDiscount(buying_case[0])).toEqual(results[0]);
-
   });
   it('shoud get 60baht discount',()=>{
     expect(vm.getDiscount(buying_case[1])).toEqual(results[1]);
